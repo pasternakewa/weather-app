@@ -36,7 +36,10 @@ function App() {
   return (
     <div>
       <input value={city} onChange={(e) => setCity(e.target.value)} />
-      <p>Data:</p>
+      <p>
+        {weatherData.name}, {weatherData.sys.country}
+      </p>
+      <p>{weatherData.main.temp}&#8451;</p>
       <p>{weatherData?.weather?.[0]?.description}</p>
     </div>
   );
