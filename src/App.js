@@ -37,11 +37,14 @@ function App() {
     <div>
       <input value={city} onChange={(e) => setCity(e.target.value)} />
       <p>
-        {weatherData.name}, {weatherData.sys.country}
+        {weatherData?.name}, {weatherData?.sys?.country}
       </p>
-      <p>{weatherData.main.temp}&#8451;</p>
+      <p>{weatherData?.main?.temp}&#8451;</p>
       <p>{weatherData?.weather?.[0]?.description}</p>
-      <Icon weatherDescriptionId={weatherData.weather[0].id} />
+      <Icon
+        weatherIconId={weatherData?.weather?.[0]?.icon}
+        alt={weatherData?.weather?.[0]?.description}
+      />
     </div>
   );
 }
