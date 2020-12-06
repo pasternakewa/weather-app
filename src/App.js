@@ -34,9 +34,20 @@ function App() {
   if (error) {
     return <p>ERROR: {error}</p>;
   }
+
+  const handleKeypress = (e) => {
+    if (e.code === "Enter") {
+      setCity(cityInput);
+    }
+  };
+
   return (
     <div>
-      <input value={cityInput} onChange={(e) => setCityInput(e.target.value)} />
+      <input
+        value={cityInput}
+        onChange={(e) => setCityInput(e.target.value)}
+        onKeyPress={(e) => handleKeypress(e)}
+      />
       <button onClick={() => setCity(cityInput)}>Submit</button>
       <p>
         {weatherData?.name}, {weatherData?.sys?.country}
