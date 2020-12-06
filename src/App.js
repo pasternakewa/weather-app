@@ -9,7 +9,8 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [weatherData, setWeatherData] = useState();
-  const [city, setCity] = useState("Warszawa");
+  const [cityInput, setCityInput] = useState("Warszawa");
+  const [city, setCity] = useState(cityInput);
 
   useEffect(() => {
     setLoading(true);
@@ -35,7 +36,8 @@ function App() {
   }
   return (
     <div>
-      <input value={city} onChange={(e) => setCity(e.target.value)} />
+      <input value={cityInput} onChange={(e) => setCityInput(e.target.value)} />
+      <button onClick={() => setCity(cityInput)}>Submit</button>
       <p>
         {weatherData?.name}, {weatherData?.sys?.country}
       </p>
