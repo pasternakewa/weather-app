@@ -1,5 +1,6 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
+import Icon from "./components/Icon";
 
 const getQueryUrl = (city) =>
   `${process.env.REACT_APP_API_URL}?q=${city}&units=metric&appid=${process.env.REACT_APP_API_KEY}`;
@@ -32,7 +33,6 @@ function App() {
   if (error) {
     return <p>ERROR: {error}</p>;
   }
-
   return (
     <div>
       <input value={city} onChange={(e) => setCity(e.target.value)} />
@@ -41,6 +41,7 @@ function App() {
       </p>
       <p>{weatherData.main.temp}&#8451;</p>
       <p>{weatherData?.weather?.[0]?.description}</p>
+      <Icon weatherDescriptionId={weatherData.weather[0].id} />
     </div>
   );
 }
