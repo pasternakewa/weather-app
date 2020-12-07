@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Icon from "./components/Icon";
 
 const getQueryUrl = (city) =>
@@ -7,13 +7,12 @@ const getQueryUrl = (city) =>
 
 function App() {
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
+  const [error, setError] = useState();
   const [weatherData, setWeatherData] = useState();
   const [cityInput, setCityInput] = useState("Warszawa");
   const [city, setCity] = useState(cityInput);
 
-  useEffect(() => {
-    setLoading(true);
+  const fetchWeatherData = useCallback(() => {
     fetch(getQueryUrl(city))
       .then((response) => response.json())
       .then((data) => {
@@ -22,10 +21,14 @@ function App() {
       })
       .catch((e) => {
         setLoading(false);
-        console.log("e", e);
         setError("fetch failed");
       });
   }, [city]);
+
+  useEffect(() => {
+    setLoading(true);
+    fetchWeatherData();
+  }, [fetchWeatherData]);
 
   if (loading) {
     return <p>loading..</p>;
