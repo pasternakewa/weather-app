@@ -1,34 +1,50 @@
 import "./App.css";
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import Icon from "./components/Icon";
 
 const getQueryUrl = (city) =>
   `${process.env.REACT_APP_API_URL}?q=${city}&units=metric&appid=${process.env.REACT_APP_API_KEY}`;
 
+const getQueryUrlByCurrentLocation = (currentLocation) => {
+  const lat = currentLocation.latitude;
+  const lon = currentLocation.longitude;
+  return `${process.env.REACT_APP_API_URL}?lat=${lat}&lon=${lon}&appid=${process.env.REACT_APP_API_KEY}`;
+};
+
 function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState();
   const [weatherData, setWeatherData] = useState();
-  const [cityInput, setCityInput] = useState("Warszawa");
-  const [city, setCity] = useState(cityInput);
+  const [city, setCity] = useState("");
 
-  const fetchWeatherData = useCallback(() => {
-    fetch(getQueryUrl(city))
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(
+      ({ coords: { latitude, longitude } }) => {
+        const location = { latitude, longitude };
+        const url = getQueryUrlByCurrentLocation(location);
+        fetchWeatherData(url);
+      }
+    );
+  }, []);
+
+  const fetchWeatherData = (url) => {
+    setLoading(true);
+    const fetchUrl = url ? url : getQueryUrl(city);
+    fetch(fetchUrl)
       .then((response) => response.json())
       .then((data) => {
         setWeatherData(data);
+        if (!city) {
+          setCity(data.name);
+        }
         setLoading(false);
       })
       .catch((e) => {
         setLoading(false);
         setError("fetch failed");
+        console.log(e);
       });
-  }, [city]);
-
-  useEffect(() => {
-    setLoading(true);
-    fetchWeatherData();
-  }, [fetchWeatherData]);
+  };
 
   if (loading) {
     return <p>loading..</p>;
@@ -39,19 +55,21 @@ function App() {
   }
 
   const handleKeypress = (e) => {
+    console.log(e);
     if (e.code === "Enter") {
-      setCity(cityInput);
+      setCity(city);
     }
+    console.log(city);
   };
 
   return (
     <div>
       <input
-        value={cityInput}
-        onChange={(e) => setCityInput(e.target.value)}
+        value={city}
+        onChange={(e) => setCity(e.target.value)}
         onKeyPress={(e) => handleKeypress(e)}
       />
-      <button onClick={() => setCity(cityInput)}>Submit</button>
+      <button onClick={() => fetchWeatherData()}>Submit</button>
       <p>
         {weatherData?.name}, {weatherData?.sys?.country}
       </p>
