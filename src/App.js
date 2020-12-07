@@ -23,7 +23,8 @@ function App() {
         const location = { latitude, longitude };
         const url = getQueryUrlByCurrentLocation(location);
         fetchWeatherData(url);
-      }
+      },
+      setLoading(false)
     );
   }, []);
 
