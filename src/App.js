@@ -29,10 +29,21 @@ function App() {
     );
   }, []);
 
+  function handleErrors(response) {
+    if (!response.ok) {
+      (function () {
+        setError("error");
+      })();
+      throw Error(response.statusText);
+    }
+    return response;
+  }
+
   const fetchWeatherData = (url) => {
     setLoading(true);
     const fetchUrl = url ? url : getQueryUrl(city);
     fetch(fetchUrl)
+      .then(handleErrors)
       .then((response) => response.json())
       .then((data) => {
         setWeatherData(data);
@@ -44,7 +55,7 @@ function App() {
       .catch((e) => {
         setLoading(false);
         setError("fetch failed");
-        console.log(e);
+        console.log("error", e);
       });
   };
 
