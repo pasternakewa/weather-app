@@ -49,15 +49,23 @@ function App() {
   };
 
   const handleKeypress = (e) => {
-    console.log(e);
-    if (e.code === "Enter") {
+    if (e.charCode === 13) {
       setCity(city);
+      fetchWeatherData();
     }
-    console.log(city);
   };
 
-  if (!city || loading) {
-    return <p>Loading...</p>;
+  if (!weatherData || loading) {
+    return (
+      <div>
+        <Input
+          value={city}
+          onChange={(e) => setCity(e.target.value)}
+          onKeyPress={(e) => handleKeypress(e)}
+        />
+        <button onClick={() => fetchWeatherData()}>Submit</button>
+      </div>
+    );
   }
 
   if (error) {
