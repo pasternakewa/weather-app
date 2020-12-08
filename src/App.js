@@ -1,6 +1,7 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
 import Icon from "./components/Icon";
+import Input from "./components/Input";
 
 const getQueryUrl = (city) =>
   `${process.env.REACT_APP_API_URL}?q=${city}&units=metric&appid=${process.env.REACT_APP_API_KEY}`;
@@ -47,14 +48,6 @@ function App() {
       });
   };
 
-  if (loading) {
-    return <p>loading..</p>;
-  }
-
-  if (error) {
-    return <p>ERROR: {error}</p>;
-  }
-
   const handleKeypress = (e) => {
     console.log(e);
     if (e.code === "Enter") {
@@ -63,9 +56,17 @@ function App() {
     console.log(city);
   };
 
+  if (!city || loading) {
+    return <p>Loading...</p>;
+  }
+
+  if (error) {
+    return <p>ERROR: {error}</p>;
+  }
+
   return (
     <div>
-      <input
+      <Input
         value={city}
         onChange={(e) => setCity(e.target.value)}
         onKeyPress={(e) => handleKeypress(e)}
