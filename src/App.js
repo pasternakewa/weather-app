@@ -64,6 +64,9 @@ function App() {
           onKeyPress={(e) => handleKeypress(e)}
         />
         <button onClick={() => fetchWeatherData()}>Submit</button>
+        <Icon weatherIconId="50d" alt="Fog" />
+        <p>I'm a little foggy...</p>
+        <p>Please enter a city or allow access to location.</p>
       </div>
     );
   }
