@@ -31,9 +31,11 @@ function App() {
 
   function handleErrors(response) {
     if (!response.ok) {
-      (function () {
-        setError("error");
-      })();
+      setError("erorr");
+      // (function () {
+      //   setError("error");
+      // })();
+
       throw Error(response.statusText);
     }
     return response;
@@ -83,7 +85,24 @@ function App() {
   }
 
   if (error) {
-    return <p>ERROR: {error}</p>;
+    return (
+      <div>
+        <Input
+          value={city}
+          onChange={(e) => setCity(e.target.value)}
+          onKeyPress={(e) => handleKeypress(e)}
+        />
+        <button
+          onClick={() => {
+            setError();
+            fetchWeatherData();
+          }}
+        >
+          Try again
+        </button>
+        <p>ERROR: {error}</p>;
+      </div>
+    );
   }
 
   return (
