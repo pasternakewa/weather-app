@@ -32,10 +32,6 @@ function App() {
   function handleErrors(response) {
     if (!response.ok) {
       setError("erorr");
-      // (function () {
-      //   setError("error");
-      // })();
-
       throw Error(response.statusText);
     }
     return response;
@@ -64,6 +60,7 @@ function App() {
   const handleKeypress = (e) => {
     if (e.charCode === 13) {
       setCity(city);
+      setError();
       fetchWeatherData();
     }
   };
@@ -98,9 +95,9 @@ function App() {
             fetchWeatherData();
           }}
         >
-          Try again
+          Submit
         </button>
-        <p>ERROR: {error}</p>;
+        <p>ERROR: {error}. Please enter a valid city and try again.</p>
       </div>
     );
   }
