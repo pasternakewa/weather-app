@@ -3,7 +3,7 @@ import React from "react";
 const Input = ({ value, onChange, onKeyPress }) => {
   return (
     <div>
-      <input {...{ value, onChange, onKeyPress }} />
+      <input className="form__input" {...{ value, onChange, onKeyPress }} />
     </div>
   );
 };
