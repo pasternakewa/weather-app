@@ -60,7 +60,7 @@ function App() {
 
   return (
     <div className="App">
-      <div className="circle"></div>
+      <div className="background-shape"></div>
       <div className="weather-container">
         <Input
           value={city}
