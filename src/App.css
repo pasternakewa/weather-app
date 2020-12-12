@@ -1,3 +1,44 @@
 .App {
-  text-align: center;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(130, 186, 247);
+  background: linear-gradient(141deg, #829ef5 0%, #6485eb 45%, #4c70da 100%);
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+.background-shape {
+  z-index: 1;
+  height: 560px;
+  width: 480px;
+  border-radius: 60% 40% 70% 30% / 65% 20% 65% 35%;
+  shape-outside: none;
+  position: absolute;
+  background: rgb(147, 171, 247);
+  background: linear-gradient(
+    -141deg,
+    rgba(133, 160, 248, 0.68) 0%,
+    rgba(189, 204, 255, 0.68) 57%,
+    rgba(245, 247, 255, 0.68) 100%
+  );
+  -webkit-box-shadow: -2.5px 3px 0px 0px rgba(245, 247, 255, 1);
+  -moz-box-shadow: -2.5px 3px 0px 0px rgba(245, 247, 255, 1);
+  box-shadow: -2.5px 3px 0px 0px rgba(245, 247, 255, 1);
+}
+
+.weather-container {
+  z-index: 2;
+  background-color: #f5f7ff;
+  opacity: 0.95;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  -webkit-box-shadow: 1px 1px 5px 0px rgba(188, 188, 188, 0.35);
+  -moz-box-shadow: 1px 1px 5px 0px rgba(188, 188, 188, 0.35);
+  box-shadow: 1px 1px 5px 0px rgba(188, 188, 188, 0.35);
+  border-radius: 8px;
+  padding: 16px;
+  position: relative;
 }
