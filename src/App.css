@@ -5,7 +5,9 @@
   justify-content: center;
   background: rgb(130, 186, 247);
   background: linear-gradient(141deg, #829ef5 0%, #6485eb 45%, #4c70da 100%);
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: "Roboto", sans-serif;
+  color: #05001a;
+  font-size: 1.2rem;
 }
 
 .background-shape {
@@ -41,4 +43,15 @@
   border-radius: 8px;
   padding: 16px;
   position: relative;
+}
+
+.form__input {
+  color: #05001a;
+  font-size: 1.2rem;
+  margin-bottom: 1.2rem;
+  padding: 1.5rem 2rem;
+  border-radius: 0.2rem;
+  background-color: rgb(255, 255, 255);
+  border: none;
+  width: 80%;
 }
