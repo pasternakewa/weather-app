@@ -59,33 +59,39 @@ function App() {
   };
 
   return (
-    <div>
-      <Input
-        value={city}
-        onChange={(e) => setCity(e.target.value)}
-        onKeyPress={(e) => handleKeypress(e)}
-      />
-      <button onClick={() => fetchWeatherData()}>Submit</button>
-      {weatherData && (
-        <p>
-          {weatherData?.name}, {weatherData?.sys?.country}
-        </p>
-      )}
-      {weatherData && <p>{weatherData?.main?.temp}&#8451;</p>}
-      {weatherData && <p>{weatherData?.weather?.[0]?.description}</p>}
-      {weatherData && (
-        <Icon
-          weatherIconId={weatherData?.weather?.[0]?.icon}
-          alt={weatherData?.weather?.[0]?.description}
+    <div className="App">
+      <div className="circle"></div>
+      <div className="weather-container">
+        <Input
+          value={city}
+          onChange={(e) => setCity(e.target.value)}
+          onKeyPress={(e) => handleKeypress(e)}
         />
-      )}
-      {error && <p>{error}. Please enter a valid city and try again.</p>}
-      {(loading || !weatherData) && <Icon weatherIconId="50d" alt="Fog" />}
-      {!error && (loading || !weatherData) && (
-        <p>
-          I'm a little foggy... Please enter a city or allow access to location.
-        </p>
-      )}
+        <button onClick={() => fetchWeatherData()}>Submit</button>
+        {weatherData && (
+          <>
+            <p>
+              {weatherData?.name}, {weatherData?.sys?.country}
+            </p>
+
+            <p>{weatherData?.main?.temp}&#8451;</p>
+
+            <Icon
+              weatherIconId={weatherData?.weather?.[0]?.icon}
+              alt={weatherData?.weather?.[0]?.description}
+            />
+            <p>{weatherData?.weather?.[0]?.description}</p>
+          </>
+        )}
+        {error && <p>{error}. Please enter a valid city and try again.</p>}
+        {(loading || !weatherData) && <Icon weatherIconId="50d" alt="Fog" />}
+        {!error && (loading || !weatherData) && (
+          <p>
+            I'm a little foggy... Please enter a city or allow access to
+            location.
+          </p>
+        )}
+      </div>
     </div>
   );
 }
