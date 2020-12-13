@@ -24,21 +24,19 @@
     rgba(189, 204, 255, 0.68) 57%,
     rgba(245, 247, 255, 0.68) 100%
   );
-  -webkit-box-shadow: -2.5px 3px 0px 0px rgba(245, 247, 255, 1);
-  -moz-box-shadow: -2.5px 3px 0px 0px rgba(245, 247, 255, 1);
   box-shadow: -2.5px 3px 0px 0px rgba(245, 247, 255, 1);
 }
 
 .weather-container {
   z-index: 2;
-  background-color: #f5f7ff;
+  background-color: #f4f6fc;
   opacity: 0.95;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   -webkit-box-shadow: 1px 1px 5px 0px rgba(188, 188, 188, 0.35);
-  -moz-box-shadow: 1px 1px 5px 0px rgba(188, 188, 188, 0.35);
+  -moz-box-shadow: 1px 1px 5px 0px rgba(188, 19696968, 188, 0.35);
   box-shadow: 1px 1px 5px 0px rgba(188, 188, 188, 0.35);
   border-radius: 8px;
   padding: 16px;
@@ -53,5 +51,30 @@
   border-radius: 0.2rem;
   background-color: rgb(255, 255, 255);
   border: none;
+  outline: none;
   width: 80%;
+}
+
+.form__button {
+  background-color: #fff;
+  color: #c2c2c2;
+  cursor: pointer;
+  padding: 18px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+  border: 1px solid #c2c2c2;
+  border-radius: 2px;
+}
+
+.form__button:hover {
+  border: 1px solid #969696;
+  color: #969696;
+  transition: border 0.15s ease-in, color 0.15s ease-in;
+}
+
+.form__button:active {
+  position: relative;
+  top: 1px;
 }
