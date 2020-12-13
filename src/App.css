@@ -10,7 +10,7 @@
   font-size: 1.2rem;
 }
 
-.background-shape {
+.background__shape {
   z-index: 1;
   height: 560px;
   width: 480px;

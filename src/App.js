@@ -59,7 +59,7 @@ function App() {
 
   return (
     <div className="App">
-      <div className="background-shape"></div>
+      <div className="background__shape"></div>
       <div className="weather-container">
         <Input
           value={city}
