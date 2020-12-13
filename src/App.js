@@ -6,7 +6,8 @@ import Input from "./components/Input";
 const getQueryUrl = (city) =>
   `${process.env.REACT_APP_API_URL}?q=${city}&units=metric&appid=${process.env.REACT_APP_API_KEY}`;
 
-const getQueryUrlByCurrentLocation = ({ latitude, longitude }) => `${process.env.REACT_APP_API_URL}?lat=${latitude}&lon=${longitude}&appid=${process.env.REACT_APP_API_KEY}`
+const getQueryUrlByCurrentLocation = ({ latitude, longitude }) =>
+  `${process.env.REACT_APP_API_URL}?lat=${latitude}&lon=${longitude}&appid=${process.env.REACT_APP_API_KEY}`;
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -65,7 +66,9 @@ function App() {
           onChange={handleInputChange}
           onKeyPress={handleKeypress}
         />
-        <button onClick={() => fetchWeatherData()}>Submit</button>
+        <button className="form__button" onClick={() => fetchWeatherData()}>
+          Submit
+        </button>
         {weatherData && (
           <>
             <p>
