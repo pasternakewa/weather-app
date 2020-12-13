@@ -82,10 +82,15 @@ function App() {
             <p>{weatherData.weather?.[0]?.description}</p>
           </>
         )}
-        {error && <p>{error}. Please enter a valid city and try again.</p>}
-        {(loading || !weatherData) && <Icon weatherIconId="50d" alt="Fog" />}
+        {error && (
+          <>
+            <p>{error}.</p>
+            <p>Please enter a valid city and try again.</p>
+          </>
+        )}
         {!error && (loading || !weatherData) && (
           <>
+            <Icon weatherIconId="50d" alt="Fog" />
             <p>I'm a little foggy...</p>
             <p>Please enter a city or allow access to location.</p>
           </>
