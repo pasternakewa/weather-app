@@ -37,9 +37,7 @@ function App() {
         }
         setWeatherData(fetchedWeatherData);
         setError();
-        if (!city) {
-          setCity(fetchedWeatherData.name);
-        }
+        setCity(fetchedWeatherData.name);
         setLoading(false);
       })
       .catch((e) => {
