@@ -69,7 +69,7 @@ function App() {
         </button>
         {weatherData && (
           <>
-            <p>
+            <p style={{ fontWeight: "bold" }}>
               {weatherData.name}, {weatherData.sys?.country}
             </p>
             <p>{weatherData.main?.temp}&#8451;</p>

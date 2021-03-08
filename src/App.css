@@ -29,7 +29,7 @@
 
 .weather-container {
   z-index: 2;
-  background-color: #f2f0f8;
+  background-color: #d7dffb;
   opacity: 0.95;
   display: flex;
   flex-direction: column;
